@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>gate-manager</title>
+        <style>
+            .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            }
+
+            .button:hover {background-color: #3e8e41}
+
+            .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+            }
+        </style>
+        <script>
+            function request(url) {
+                const req = new XMLHttpRequest();
+
+                req.onreadystatechange = function(event) {
+                    if (this.readyState === XMLHttpRequest.DONE) {
+                        if (this.status === 200) {
+                            console.log("Réponse reçue: %s", this.responseText);
+                        } else {
+                            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+                        }
+                    }
+                };
+
+                req.open('GET', url, true);
+                req.send(null);
+            }
+        </script>
+    </head>
+    <body>
+        <button style="height:150px;width:200px;" onclick="request('./big.php');" class="button">grand</button>
+        <button style="height:150px;width:200px;" onclick="request('./small.php');" class="button">small</button>
+    </body>
+</html>
