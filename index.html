@@ -3,31 +3,24 @@
     <head>
         <meta charset="utf-8">
         <title>gate-manager</title>
+        <link rel="shortcut icon" href="./hodor.png">
         <style>
-            .button {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 24px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-            }
-
-            .button:hover {background-color: #3e8e41}
-
-            .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
+            body {
+                background-color:  #708090;
             }
         </style>
         <script>
+            function process() {
+                var element = document.getElementById("portal");
+                element.style.backgroundColor = "#a0cefd";
+
+                setTimeout(function(){
+                    element.style.backgroundColor = "white";
+                },500);
+
+                request('./portail.php');
+            }
+
             function request(url) {
                 const req = new XMLHttpRequest();
 
@@ -47,6 +40,6 @@
         </script>
     </head>
     <body>
-        <button style="height:150px;width:200px;" onclick="request('./portail.php');" class="button">Portail</button>
+        <img id="portal" style="background-color:white;border-radius:15px;margin-left:30vw;margin-top:30vh;height:40vh;width:40vw;" onclick="process();" src="./portal.png"/>
     </body>
 </html>
